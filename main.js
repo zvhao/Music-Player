@@ -43,7 +43,6 @@ const heightDashboard = $('.dashboard').offsetHeight
 
 // console.log(heightDashboard)
 
-playlist.style.marginTop = heightDashboard + 'px'
 
 
 
@@ -209,6 +208,8 @@ const app = {
 
 		//dat volume mac dinh la 50%
 		window.onload = function () {
+			playlist.style.marginTop = heightDashboard + 'px' //fix playlist
+
 			audio.volume = 0.5
 			volume.value = audio.volume * 100
 			// console.log(volume.value)
@@ -223,7 +224,7 @@ const app = {
 
 		//giam am luong
 		volumeIconLeft.onclick = function () {
-			if(audio.volume > 0) {
+			if (audio.volume > 0) {
 				const volumeNotFixed = audio.volume - 0.1
 				audio.volume = volumeNotFixed.toFixed(1)
 				volume.value = audio.volume * 100
@@ -231,7 +232,7 @@ const app = {
 			// console.log(audio.volume)
 		}
 		volumeIconRight.onclick = function () {
-			if(audio.volume < 1) {
+			if (audio.volume < 1) {
 				const volumeNotFixed = audio.volume + 0.1
 				audio.volume = volumeNotFixed.toFixed(1)
 				volume.value = audio.volume * 100
