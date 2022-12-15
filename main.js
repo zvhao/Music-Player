@@ -50,6 +50,18 @@ const app = {
 
 	songs: [
 		{
+			name: 'Buồn Làm Chi Em Ơi',
+			singer: 'Hoài Lâm',
+			path: './assets/music/HOÀI LÂM - Buồn Làm Chi Em Ơi (Official Lyric Video).mp3',
+			image: 'https://i.ytimg.com/vi/ahF-3SaeJJ4/maxresdefault.jpg'
+		},
+		{
+			name: 'Anh Muốn Em Sống Sao (Remix)',
+			singer: 'Khưu Huy Vũ',
+			path: './assets/music/Em Muốn Anh Sống Sao [ Dence Remix ] Khưu Huy Vũ.mp3',
+			image: 'https://s1.dmcdn.net/v/SQ0ls1VGvvn9_tzW5/x1080'
+		},
+		{
 			name: 'Bông Cỏ Mây',
 			singer: 'NB3 Hoài Bảo, Nguyeen',
 			path: './assets/music/BongCoMay-NB3HoaiBaoNguyeen-8037351.mp3',
@@ -79,18 +91,7 @@ const app = {
 			path: './assets/music/DungNoiXaNhau-DuongHongLoan-4797052.mp3',
 			image: 'https://i.ytimg.com/vi/uepAFhZLgJE/maxresdefault.jpg'
 		},
-		{
-			name: 'Buồn Làm Chi Em Ơi',
-			singer: 'Hoài Lâm',
-			path: './assets/music/HOÀI LÂM - Buồn Làm Chi Em Ơi (Official Lyric Video).mp3',
-			image: 'https://i.ytimg.com/vi/ahF-3SaeJJ4/maxresdefault.jpg'
-		},
-		{
-			name: 'Anh Muốn Em Sống Sao (Remix)',
-			singer: 'Khưu Huy Vũ',
-			path: './assets/music/Em Muốn Anh Sống Sao [ Dence Remix ] Khưu Huy Vũ.mp3',
-			image: 'https://s1.dmcdn.net/v/SQ0ls1VGvvn9_tzW5/x1080'
-		},
+		
 		{
 			name: 'Con Đê Chung Tình',
 			singer: 'Giáng Tiên',
