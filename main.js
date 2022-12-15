@@ -24,6 +24,7 @@ const cd = $('.cd')
 const playBtn = $('.btn-toggle-play')
 const player = $('.player')
 const progress = $('#progress')
+const volume = $('#volume')
 const nextBtn = $('.btn-next')
 const prevBtn = $('.btn-prev')
 const randomBtn = $('.btn-random')
@@ -31,12 +32,16 @@ const repeatBtn = $('.btn-repeat')
 const playlist = $('.playlist')
 const timeAudioLeft = $('.time-audio-left')
 const timeAudioRight = $('.time-audio-right')
+const volumeIconLeft = $('.volume-icon-left')
+const volumeIconRight = $('.volume-icon-right')
 // const darkMode = $('.darkmode')
-// console.log(darkMode)
+// console.log(volumeIconLeft)
 
 
 
 const heightDashboard = $('.dashboard').offsetHeight
+
+// console.log(heightDashboard)
 
 playlist.style.marginTop = heightDashboard + 'px'
 
@@ -93,7 +98,7 @@ const app = {
 			path: './assets/music/DungNoiXaNhau-DuongHongLoan-4797052.mp3',
 			image: 'https://i.ytimg.com/vi/uepAFhZLgJE/maxresdefault.jpg'
 		},
-		
+
 		{
 			name: 'Con Đê Chung Tình',
 			singer: 'Giáng Tiên',
@@ -106,7 +111,7 @@ const app = {
 			path: './assets/music/Con Đường Mang Tên Em_Duy Khánh, Hà My_-1076022118.mp3',
 			image: 'https://i.ytimg.com/vi/gZLhYubnsuk/hqdefault.jpg'
 		},
-		
+
 
 	],
 
@@ -175,7 +180,7 @@ const app = {
 			}
 		}
 
-		//khi song duoc play
+		//khi song duoc play - pause
 		audio.onplay = function () {
 			_this.isPlaying = true
 			player.classList.add('playing')
@@ -188,18 +193,51 @@ const app = {
 
 		}
 
+		// loai bo truong hop duration = NaN
 		audio.onloadedmetadata = function () {
 			const floorDura = Math.floor(audio.duration)
 			const second = floorDura % 60
 			const minute = (floorDura - second) / 60
 			const timeAudio = minute + ':' + second
-			if(minute < 10) {
+			if (minute < 10) {
 				timeAudioRight.textContent = '0' + timeAudio
 
 			}
 			// console.log(timeAudio)
 
 		};
+
+		//dat volume mac dinh la 50%
+		window.onload = function () {
+			audio.volume = 0.5
+			volume.value = audio.volume * 100
+			// console.log(volume.value)
+		}
+
+		//dieu chinh volume bang thanh truot
+		volume.oninput = function (e) {
+			// const valueVolume = 
+			audio.volume = e.target.value / 100
+			// console.log(audio.volume)
+		}
+
+		//giam am luong
+		volumeIconLeft.onclick = function () {
+			if(audio.volume > 0) {
+				const volumeNotFixed = audio.volume - 0.1
+				audio.volume = volumeNotFixed.toFixed(1)
+				volume.value = audio.volume * 100
+			}
+			// console.log(audio.volume)
+		}
+		volumeIconRight.onclick = function () {
+			if(audio.volume < 1) {
+				const volumeNotFixed = audio.volume + 0.1
+				audio.volume = volumeNotFixed.toFixed(1)
+				volume.value = audio.volume * 100
+			}
+			// console.log(audio.volume)
+		}
 
 		//khi tien do bai hat thay doi
 		audio.ontimeupdate = function () {
@@ -216,9 +254,10 @@ const app = {
 		progress.oninput = function (e) {
 			const seekTime = e.target.value * audio.duration / 100
 			audio.currentTime = seekTime
-			audio.volume = 0.2
 			// console.log(seekTime)
 		}
+
+
 
 		//khi next song
 		nextBtn.onclick = function () {
@@ -302,23 +341,23 @@ const app = {
 		// 		$('.dashboard').style.backgroundColor = 'white'
 		// 		this.style.color = '#000'
 		// 	}
-			
+
 		// }
 
 
 	},
 
 	SetTimeChangeAudio: function (val) {
-		if(val < 10) {
+		if (val < 10) {
 			timeAudio = '00:0' + val
 		}
-		else if(val >=10 && val < 60) {
+		else if (val >= 10 && val < 60) {
 			timeAudio = '00:' + val
 		}
-		else if(val >= 60) {
+		else if (val >= 60) {
 			const second = val % 60
 			const minute = (val - second) / 60
-			if(second < 10) {
+			if (second < 10) {
 				timeAudio = '0' + minute + ':0' + second
 			} else {
 				timeAudio = '0' + minute + ':' + second
