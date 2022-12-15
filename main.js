@@ -120,7 +120,7 @@ const app = {
 					style="background-image: url('${song.image}')">
 				</div>
 				<div class="body">
-					<h3 class="title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; width: 290px">${song.name}</h3>
+					<h3 class="title" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis; max-width: 260px">${song.name}</h3>
 					<p class="author">${song.singer}</p>
 				</div>
 				<div class="option">
@@ -211,7 +211,7 @@ const app = {
 		}
 
 		// xu li khi tua song
-		progress.onclick = function (e) {
+		progress.oninput = function (e) {
 			const seekTime = e.target.value * audio.duration / 100
 			audio.currentTime = seekTime
 			// console.log(seekTime)
