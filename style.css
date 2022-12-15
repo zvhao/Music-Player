@@ -118,9 +118,9 @@ header h2 {
 
 .progress {
 	width: 100%;
-	-webkit-appearance: none;
+	/* -webkit-appearance: none; */
 	height: 8px;
-	background: #d3d3d3;
+	/* background: #c01818; */
 	outline: none;
 	opacity: 0.7;
 	-webkit-transition: 0.2s;
@@ -129,8 +129,8 @@ header h2 {
 }
 
 .progress::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	appearance: none;
+	/* -webkit-appearance: none; */
+	/* appearance: none; */
 	width: 14px;
 	height: 14px;
 	background-color: var(--primary-color);
@@ -140,7 +140,7 @@ header h2 {
 
 /* PLAYLIST */
 .playlist {
-	margin-top: 413px;
+	/* margin-top: 413px; */
 	padding: 12px;
 }
 
@@ -198,3 +198,12 @@ header h2 {
 	color: #999;
 	font-size: 18px;
 }
+
+
+
+/* .darkmode {
+	font-size: 30px;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+} */

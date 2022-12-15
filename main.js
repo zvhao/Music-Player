@@ -31,12 +31,14 @@ const repeatBtn = $('.btn-repeat')
 const playlist = $('.playlist')
 const timeAudioLeft = $('.time-audio-left')
 const timeAudioRight = $('.time-audio-right')
+// const darkMode = $('.darkmode')
+// console.log(darkMode)
 
 
 
-// const heightDashboard = $('.dashboard').offsetHeight
-// playlist.style.offsetHeight = heightDashboard
+const heightDashboard = $('.dashboard').offsetHeight
 
+playlist.style.marginTop = heightDashboard + 'px'
 
 
 
@@ -214,6 +216,7 @@ const app = {
 		progress.oninput = function (e) {
 			const seekTime = e.target.value * audio.duration / 100
 			audio.currentTime = seekTime
+			audio.volume = 0.2
 			// console.log(seekTime)
 		}
 
@@ -262,6 +265,8 @@ const app = {
 			}
 		}
 
+
+
 		// lang nghe hanh vi click playlist
 		playlist.onclick = function (e) {
 			const songNode = e.target.closest('.song:not(.active)')
@@ -288,6 +293,17 @@ const app = {
 				}
 			}
 		}
+
+		// darkMode.onclick = function () {
+		// 	if(this.style.color = '#000') {
+		// 		$('.dashboard').style.setProperty('', 'black')
+		// 		this.style.color = '#fff'
+		// 	} else {
+		// 		$('.dashboard').style.backgroundColor = 'white'
+		// 		this.style.color = '#000'
+		// 	}
+			
+		// }
 
 
 	},
