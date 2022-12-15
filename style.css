@@ -1,5 +1,5 @@
 :root {
-	--primary-color: #ec1f55;
+	--primary-color: #037dff;
 	--text-color: #333;
 }
 
@@ -66,7 +66,7 @@ header h2 {
 .cd {
 	display: flex;
 	margin: auto;
-	width: 200px;
+	width: 180px;
 }
 
 .cd-thumb {
@@ -108,10 +108,18 @@ header h2 {
 	background-color: var(--primary-color);
 }
 
+.time-audio {
+	font-size: 12px;
+	display: flex;
+	justify-content: space-between;
+	line-height: 12px;
+	color: var(--primary-color);
+}
+
 .progress {
 	width: 100%;
 	-webkit-appearance: none;
-	height: 6px;
+	height: 8px;
 	background: #d3d3d3;
 	outline: none;
 	opacity: 0.7;
@@ -123,14 +131,14 @@ header h2 {
 	-webkit-appearance: none;
 	appearance: none;
 	width: 12px;
-	height: 6px;
+	height: 8px;
 	background-color: var(--primary-color);
 	cursor: pointer;
 }
 
 /* PLAYLIST */
 .playlist {
-	margin-top: 408px;
+	margin-top: 413px;
 	padding: 12px;
 }
 
@@ -142,6 +150,7 @@ header h2 {
 	padding: 8px 16px;
 	border-radius: 5px;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
 }
 
 .song.active {
