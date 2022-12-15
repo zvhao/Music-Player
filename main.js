@@ -202,25 +202,19 @@ const app = {
 		//khi tien do bai hat thay doi
 		audio.ontimeupdate = function () {
 			if (audio.duration) {
-				const progressPercent = Math.floor(audio.currentTime * 100 / audio.duration)
+				const progressPercent = audio.currentTime * 100 / audio.duration
 				progress.value = progressPercent
+				// console.log(progressPercent)
 				timeAudioLeft.textContent = _this.SetTimeChangeAudio(Math.floor(audio.currentTime))
 
 			}
 		}
 
-		audio.timeChange = function () {
-			if (audio.duration) {
-				console.log(Math.floor(audio.currentTime))
-
-			}
-
-		}
-
 		// xu li khi tua song
-		progress.onchange = function (e) {
+		progress.onclick = function (e) {
 			const seekTime = e.target.value * audio.duration / 100
 			audio.currentTime = seekTime
+			// console.log(seekTime)
 		}
 
 		//khi next song
@@ -299,16 +293,20 @@ const app = {
 	},
 
 	SetTimeChangeAudio: function (val) {
-		if(val > 60) {
-			const second = val % 60
-			const minute = (val - second) / 60
-			const timeAudio = minute + ':' + second
-		}
 		if(val < 10) {
 			timeAudio = '00:0' + val
-		} else {
+		}
+		else if(val >=10 && val < 60) {
 			timeAudio = '00:' + val
-
+		}
+		else if(val >= 60) {
+			const second = val % 60
+			const minute = (val - second) / 60
+			if(second < 10) {
+				timeAudio = '0' + minute + ':0' + second
+			} else {
+				timeAudio = '0' + minute + ':' + second
+			}
 		}
 		return timeAudio
 	},

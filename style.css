@@ -83,7 +83,7 @@ header h2 {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	padding: 18px 0 8px 0;
+	padding: 18px 20px 8px 20px;
 }
 
 .control .btn {
@@ -125,15 +125,17 @@ header h2 {
 	opacity: 0.7;
 	-webkit-transition: 0.2s;
 	transition: opacity 0.2s;
+	border-radius: 4px;
 }
 
 .progress::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	appearance: none;
-	width: 12px;
-	height: 8px;
+	width: 14px;
+	height: 14px;
 	background-color: var(--primary-color);
 	cursor: pointer;
+	border-radius: 50%;
 }
 
 /* PLAYLIST */
