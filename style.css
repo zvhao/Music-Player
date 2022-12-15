@@ -122,10 +122,6 @@ header h2 {
 	gap: 10px;
 }
 
-.volume {
-	transition: all linear .7s;
-}
-
 .volume-icon {
 	font-size: 16px;
 }
@@ -163,7 +159,7 @@ header h2 {
 
 /* PLAYLIST */
 .playlist {
-	/* margin-top: 413px; */
+	margin-top: 413px;
 	padding: 12px;
 }
 

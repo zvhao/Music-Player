@@ -161,11 +161,20 @@ const app = {
 		})
 		cdThumbAnimate.pause()
 
+		//windown load
+		window.onload = function () {
+			playlist.style.marginTop = heightDashboard + 'px' //fix playlist
+			document.documentElement.scrollTop = 0
+			window.scrollY = 0
+			// console.log(document.documentElement.scrollTop)
+
+		}
+
 		//xu li zoom cd
 		document.onscroll = function () {
 			const scrollTop = window.scrollY || document.documentElement.scrollTop
 			const newCdWidth = cdWidth - scrollTop
-			// console.log(newCdWidth)
+			// console.log(scrollTop)
 			cd.style.width = newCdWidth > 0 ? newCdWidth + 'px' : 0
 			cd.style.opacity = newCdWidth / cdWidth
 		}
@@ -208,7 +217,6 @@ const app = {
 
 		//dat volume mac dinh la 50%
 		window.onload = function () {
-			playlist.style.marginTop = heightDashboard + 'px' //fix playlist
 
 			audio.volume = 0.5
 			volume.value = audio.volume * 100
