@@ -29,7 +29,17 @@ const prevBtn = $('.btn-prev')
 const randomBtn = $('.btn-random')
 const repeatBtn = $('.btn-repeat')
 const playlist = $('.playlist')
-// console.log(playBtn)
+const timeAudioLeft = $('.time-audio-left')
+const timeAudioRight = $('.time-audio-right')
+
+
+
+// const heightDashboard = $('.dashboard').offsetHeight
+// playlist.style.offsetHeight = heightDashboard
+
+
+
+
 
 const app = {
 	currentIndex: 0,
@@ -40,53 +50,60 @@ const app = {
 
 	songs: [
 		{
-			name: 'Bài ca kỉ niệm',
+			name: 'Bông Cỏ Mây',
+			singer: 'NB3 Hoài Bảo, Nguyeen',
+			path: './assets/music/BongCoMay-NB3HoaiBaoNguyeen-8037351.mp3',
+			image: 'https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/cover/c/e/4/b/ce4b27295d62774bcf5179d5eec7e0c6.jpg'
+		},
+		{
+			name: 'Bài Ca Kỉ Niệm',
 			singer: 'Duy Khánh, Vy Thảo',
 			path: './assets/music/Bài Ca Kỷ Niệm_Duy Khánh, Vy Thảo_-1076022116.mp3',
-			image: 'https://i.ytimg.com/vi/BP6-2Tsl5qE/maxresdefault.jpg'
+			image: 'https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/covers/7/f/7fd2c9ac4b2198844263095286396242_1490956425.jpg'
 		},
 		{
-			name: 'Chiều qua quà Hậu Giang',
+			name: 'Chiều Qua Phà Hậu Giang',
 			singer: 'Lưu Chí Vỹ, Dương Hồng Loan',
 			path: './assets/music/ChieuQuaPhaHauGiang-LuuChiVyDuongHongLoan-3129054_hq.mp3',
-			image: 'https://avatar-ex-swe.nixcdn.com/song/share/2022/06/09/2/1/a/4/1654766694296.jpg'
+			image: 'https://i.ytimg.com/vi/HBB_soOifX8/maxresdefault.jpg'
 		},
 		{
-			name: 'Con gái của mẹ',
+			name: 'Con Gái Của Mẹ',
 			singer: 'Lệ Thuỷ, Phượng Liên',
 			path: './assets/music/Con Gái Của Mẹ_Lệ Thủy, Phượng Liên_-1073824723.mp3',
-			image: 'https://i.ytimg.com/vi/BP6-2Tsl5qE/maxresdefault.jpg'
+			image: 'https://i.ytimg.com/vi/TrJtBKm69FQ/maxresdefault.jpg'
 		},
 		{
-			name: 'Đừng nói xa nhau',
+			name: 'Đừng Nói Xa Nhau',
 			singer: 'Dương Hồng Loan',
 			path: './assets/music/DungNoiXaNhau-DuongHongLoan-4797052.mp3',
-			image: 'https://avatar-ex-swe.nixcdn.com/song/share/2022/06/09/2/1/a/4/1654766694296.jpg'
+			image: 'https://i.ytimg.com/vi/uepAFhZLgJE/maxresdefault.jpg'
 		},
 		{
-			name: 'Buồn làm chi em ơi',
+			name: 'Buồn Làm Chi Em Ơi',
 			singer: 'Hoài Lâm',
 			path: './assets/music/HOÀI LÂM - Buồn Làm Chi Em Ơi (Official Lyric Video).mp3',
-			image: 'https://i.ytimg.com/vi/BP6-2Tsl5qE/maxresdefault.jpg'
+			image: 'https://i.ytimg.com/vi/ahF-3SaeJJ4/maxresdefault.jpg'
 		},
 		{
-			name: 'Anh muốn em sống sao (Remix)Anh muốn em sống sao (Remix)',
+			name: 'Anh Muốn Em Sống Sao (Remix)',
 			singer: 'Khưu Huy Vũ',
 			path: './assets/music/Em Muốn Anh Sống Sao [ Dence Remix ] Khưu Huy Vũ.mp3',
-			image: 'https://avatar-ex-swe.nixcdn.com/song/share/2022/06/09/2/1/a/4/1654766694296.jpg'
+			image: 'https://s1.dmcdn.net/v/SQ0ls1VGvvn9_tzW5/x1080'
 		},
 		{
-			name: 'Con đê chung tình',
+			name: 'Con Đê Chung Tình',
 			singer: 'Giáng Tiên',
 			path: './assets/music/ConDeChungTinh-GiangTien_3e9xd.mp3',
-			image: 'https://i.ytimg.com/vi/BP6-2Tsl5qE/maxresdefault.jpg'
+			image: 'https://zmp3-photo-fbcrawler.zmdcdn.me/avatars/c/9/3/2/c932a34d2e67da863ff1d4e928a2ad61.jpg'
 		},
 		{
 			name: 'Con Đường Mang Tên Em',
 			singer: 'Duy Khánh, Hà My',
 			path: './assets/music/Con Đường Mang Tên Em_Duy Khánh, Hà My_-1076022118.mp3',
-			image: 'https://avatar-ex-swe.nixcdn.com/song/share/2022/06/09/2/1/a/4/1654766694296.jpg'
+			image: 'https://i.ytimg.com/vi/gZLhYubnsuk/hqdefault.jpg'
 		},
+		
 
 	],
 
@@ -168,13 +185,35 @@ const app = {
 
 		}
 
+		audio.onloadedmetadata = function () {
+			const floorDura = Math.floor(audio.duration)
+			const second = floorDura % 60
+			const minute = (floorDura - second) / 60
+			const timeAudio = minute + ':' + second
+			if(minute < 10) {
+				timeAudioRight.textContent = '0' + timeAudio
+
+			}
+			// console.log(timeAudio)
+
+		};
+
 		//khi tien do bai hat thay doi
 		audio.ontimeupdate = function () {
 			if (audio.duration) {
 				const progressPercent = Math.floor(audio.currentTime * 100 / audio.duration)
 				progress.value = progressPercent
+				timeAudioLeft.textContent = _this.SetTimeChangeAudio(Math.floor(audio.currentTime))
 
 			}
+		}
+
+		audio.timeChange = function () {
+			if (audio.duration) {
+				console.log(Math.floor(audio.currentTime))
+
+			}
+
 		}
 
 		// xu li khi tua song
@@ -254,13 +293,30 @@ const app = {
 				}
 			}
 		}
+
+
+	},
+
+	SetTimeChangeAudio: function (val) {
+		if(val > 60) {
+			const second = val % 60
+			const minute = (val - second) / 60
+			const timeAudio = minute + ':' + second
+		}
+		if(val < 10) {
+			timeAudio = '00:0' + val
+		} else {
+			timeAudio = '00:' + val
+
+		}
+		return timeAudio
 	},
 
 	scrollToActiveSong: function () {
 		setTimeout(() => {
 			$('.song.active').scrollIntoView({
 				behavior: 'smooth',
-				block: 'center'
+				block: 'end'
 			})
 		}, 300)
 	},
